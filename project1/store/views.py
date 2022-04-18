@@ -10,3 +10,6 @@ def cart(request):
 
 def checkout(request):
     return render(request, 'store/checkout.html')
+
+def main(request):
+    return render(request, 'store/main.html')
