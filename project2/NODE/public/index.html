@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>hello</h1>
+    <div id="message"></div>
+    
+
+    <form action="/" id="form">
+        <input type="text" name="first" value="Emmy">
+        <input type="text" name="second" value="red">
+        <button id="btn1" type="submit">Get random</button>
+        <button id="btn2" type="submit">Post</button>
+    </form>
+    <script>
+        message = document.getElementById("message");
+        $("#btn1").click(function Something(event){
+            event.preventDefault(); 
+            // let myData = $("#form :input").serialize();
+            $.ajax({
+                method: "GET",
+                url: "https://randomuser.me/api/",
+                dataType: "json",
+                success: function(data){
+                    myData = $("input[name='first']").val(data.results[0].name.first);
+
+                    // message.innerHtml(myData)
+                }
+            });
+        });
+    
+
+        $("#btn2").click(function Something(event){
+            event.preventDefault(); 
+
+            // let myData = $("#form :input").serialize();
+            let myData = $("#form :input").serialize();
+            console.log(myData)
+            $.ajax({
+                method: "POST",
+                url: "http://localhost:3000/posts",
+                data: myData,
+                success: function(data){
+                    console.log(data)
+                    //$("#message").html("<p>" + myData + "</p>")
+                    $("#message").html("<p>" + data.first + data.second + data.id + "</p>")
+                    let html = ''
+                    // data.map(element => {
+                    //     html += `<p>id: ${element.id} </p>`
+                    // });
+            //         $.each( data, function(index,value) {
+            //             console.log(value)
+            //             $("#message").html("<p>" + value+ "</p>");
+            //   });
+                    // $("#message").html(html)
+                    // console.log(html)
+                },
+                error: function(xhr, textStatus) {
+                    console.log("error..");
+            }
+            });
+        });
+    </script>
+</body>
+</html>

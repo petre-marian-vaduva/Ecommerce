@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>Google sheets</h1>
+
+    <div id="output"></div>
+    
+    <script>
+        let url = "https://docs.google.com/spreadsheets/d/1-SjSbzHv1JaZBrB8lIubgtXfIArLDO5p3gWasQUebp8/gviz/tq?";
+        let output = $("#output")
+        output.html(url)
+        $.ajax({
+            method: "GET",
+            url: url,
+            success: function(data){
+                const temp = data.substr(47).slice(0, -2);
+                const json = JSON.parse(temp)
+                console.log(json)
+            }
+        })
+    </script>
+
+</body>
+</html>
