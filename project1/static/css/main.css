@@ -56,3 +56,17 @@
     margin-bottom: 10px;
     border-bottom: 1px solid #ececec;
 }
+
+.quantity{
+    display: inline-block;
+    font-weight: 700;
+    padding-right: 10px;
+}
+
+.chg-quantity:hover{
+    opacity: .6;
+}
+
+.hidden{
+    display: none!important;
+}
