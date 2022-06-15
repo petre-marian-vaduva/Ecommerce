@@ -1,6 +1,7 @@
 {% extends 'store/main.html' %} 
 {% load static %}
 {% block content %}
+
     <div class="row">
         <div class="col-lg-6">
             <div class="box-element" id="form-wrapper">
@@ -33,6 +34,11 @@
                     <input id="form-button" class="btn btn-success btn-block" type="submit" value="Continue">
                 </form>
             </div>
+            <br>
+            <div class="box-element hidden" id="payment-info">
+                <small>Paypal Options</small>
+            </div>
+
         </div>
 
         <div class="col-lg-6">
